@@ -1,4 +1,5 @@
 from random import randint
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name, char_class):
@@ -94,4 +95,60 @@ def main():
     print(start_training(char_name, char_class))
 
 
+name2: int = 7
+name3: str = 's'
+
 main()
+
+
+# Тестовые данные.
+TEST_DATA: list[tuple[int, str, bool]] = [
+    (44, 'success', True),
+    (16, 'failure', True),
+    (4, 'success', False),
+    (21, 'failure', False),
+]
+
+BONUS: float = 1.1
+ANTIBONUS: float = 0.8
+
+
+def add_rep(current_rep: float, rep_points: int, buf_effect: bool) -> float:
+    current_rep += rep_points
+    if buf_effect:
+        return current_rep * BONUS
+    return current_rep
+
+
+def remove_rep(
+        current_rep: float, rep_points: int, debuf_effect: bool) -> float:
+    current_rep -= rep_points
+    if debuf_effect:
+        return current_rep * ANTIBONUS
+    return current_rep
+
+
+def main() -> None:
+    run_screensaver()
+    print('Приветствую тебя, искатель приключений!')
+    print('Прежде чем начать игру...')
+    char_name: str = input('...назови себя: ')
+    print(f'Здравствуй, {char_name}! '
+          'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
+    print('Ты можешь выбрать один из трёх путей силы:')
+    print('Воитель, Маг, Лекарь')
+    char_class: str = choice_char_class()
+    print(start_training(char_name, char_class))
+
+
+if __name__ == '__main__':
+    run_screensaver()
+    print('Приветствую тебя, искатель приключений!')
+    print('Прежде чем начать игру...')
+    char_name: str = input('...назови себя: ')
+    print(f'Здравствуй, {char_name}! '
+          'Сейчас твоя выносливость — 80, атака — 5 и защита — 10.')
+    print('Ты можешь выбрать один из трёх путей силы:')
+    print('Воитель, Маг, Лекарь')
+    char_class: str = choice_char_class()
+    print(start_training(char_name, char_class))
